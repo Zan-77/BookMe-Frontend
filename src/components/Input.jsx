@@ -18,7 +18,6 @@ export const Input = ({ id, className, name, control, rules, label, type = "text
         rules: rules
     });
 
-    console.log(error);
 
 
     const inputStyle = "peer/text w-full bg-inherit dark:bg-inherit text-light-text-dark dark:text-dark-text-dark  " + " " +

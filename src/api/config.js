@@ -1,13 +1,12 @@
 import axios from "redaxios"
 
 
-const BASE_URL = "http://localhost:8000/api"
+const BASE_URL = "http://192.168.1.6:8000/api"
 
 const ax = axios.create({
     baseURL: BASE_URL,
     timeout: 10000,
     withCredentials: false,
-
 })
 
 function setAuthToken(token) {
@@ -19,4 +18,4 @@ function setAuthToken(token) {
     }
 }
 
-export { ax }
+export { ax ,setAuthToken }

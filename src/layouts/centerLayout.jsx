@@ -6,7 +6,7 @@ const centerLayout = () => {
 
 
     return (
-        <div className="w-full h-dvh *:absolute *:top-1/2 *:left-1/2 *:-translate-1/2">
+        <div className="w-full h-dvh *:md:absolute *:md:top-1/2 *:md:left-1/2 *:md:-translate-1/2">
             <Outlet/>
         </div>
 

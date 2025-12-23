@@ -13,7 +13,7 @@ import LoadingIcon from "./svg/LoadingIcon"
  * @param {Component} endIcon
  *  
  */
-const Button = ({ children, className, to = "", variant = "outline", size = "sm", color = "primary", disabled = false, loading = false, startIcon, endIcon, onClick, ...props }) => {
+const Button = ({ children, className, to = "", variant = "outline", size = "sm", color = "primary", disabled = false, loading = false, startIcon, endIcon, onClick,onSubmit, ...props }) => {
     const variants = {
         text: {
             primary: "text-light-primary-dark dark:text-dark-primary hover:text-light-primary  dark:hover:bg-dark-primary-light/10",
@@ -39,16 +39,16 @@ const Button = ({ children, className, to = "", variant = "outline", size = "sm"
     }
     const finalStyle =
         `${disabled || loading ? variants[variant].disabled : "hover:cursor-pointer " + variants[variant][color]} ${sizes[size]}
-      ${(startIcon || endIcon) && children ? "flex w-fit *:mx-0.5" : ""} ${loading && !(startIcon || endIcon) ? "text-transparent!" : ""} relative font-medium transition-colors text-xs sm:text-sm lg:text-base rounded-sm content-center`
-    if (to)
-        return <Link to={to} className={finalStyle + " " + (className || "")} onClick={(e) => { if (!(disabled || loading) && typeof onClick === 'function') onClick(e) }} {...props}>
+      ${(startIcon && endIcon) && children ? "flex w-fit  [&_svg]:mx-0.5" : (startIcon && !endIcon) && children ?"flex w-fit [&_svg]:mr-2": (!startIcon && endIcon) && children?"flex w-fit  [&_svg]:ml-2":"" }  ${loading && !(startIcon || endIcon) ? "text-transparent!" : ""}  relative font-medium transition-colors text-xs sm:text-sm lg:text-base rounded-sm content-center`
+    if (to) 
+        return <Link to={to} className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit ==="function"? disabled || loading ? null : onSubmit(e):null }} onClick={(e) => {typeof onClick ==="function"?  disabled || loading ? null : onClick(e):null }} {...props}>
             {loading && startIcon ? <LoadingIcon /> : startIcon}
             <span>{children}</span>
             {loading && endIcon ? <LoadingIcon /> : endIcon}
             {loading && !(startIcon || endIcon) ? <LoadingIcon className="absolute top-1/2 left-1/2 transition -translate-1/2" /> : ""}
         </Link>
     else
-        return <button className={finalStyle + " " + (className || "")} onClick={(e) => { if (!(disabled || loading) && typeof onClick === 'function') onClick(e) }} {...props}>
+        return <button className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit ==="function"? disabled || loading ? null : onSubmit(e):null }} onClick={(e) => {typeof onClick ==="function"?  disabled || loading ? null : onClick(e):null }} {...props}>
             {loading && startIcon ? <LoadingIcon /> : startIcon}
             <span>{children}</span>
             {loading && endIcon ? <LoadingIcon /> : endIcon}

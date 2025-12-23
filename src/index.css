@@ -1,11 +1,14 @@
 @import "tailwindcss";
+
+
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 
 
 
 @theme {
-    --color-error:oklch(0.58 0.18 20);
+    --color-error:oklch(0.56 0.21 24);
     --color-ok:oklch(0.52 0.12 140);
     --color-alert:oklch(0.63 0.11 85);
     /*
@@ -30,69 +33,11 @@
     --color-light-primary: oklch(0.6 0.18 300);
     --color-light-primary-light: oklch(0.7 0.18 300);
 
-    --color-light-dark: oklch(0.82 0 264);
-    --color-light: oklch(0.86 0 264);
-    --color-light-light: oklch(0.96 0 264);
+    --color-light-dark: oklch(0.8 0 264);
+    --color-light: oklch(0.85 0 264);
+    --color-light-light: oklch(0.95 0 264);
 
     --color-light-text-dark: oklch(0.2 0 0);
     --color-light-text-muted: oklch(0.34 0 0);
 }
 
-/* Autofill overrides: force text color and background to inherit from page/theme */
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-textarea:-webkit-autofill:hover,
-select:-webkit-autofill:hover,
-input:-webkit-autofill::first-line,
-textarea:-webkit-autofill::first-line,
-select:-webkit-autofill::first-line {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: currentColor !important;
-    color: inherit !important;
-    transition: background-color 5000s ease-in-out 0s !important;
-}
-
-/* Ensure inputs use the theme text colors by default */
-input,
-textarea,
-select {
-    color: var(--color-light-text-dark);
-}
-
-/* Dark mode inputs */
-.dark input,
-.dark textarea,
-.dark select {
-    color: var(--color-dark-text-dark);
-}
-
-/* Explicitly set autofill fill color per theme to override browser defaults */
-:root input:-webkit-autofill,
-:root textarea:-webkit-autofill,
-:root select:-webkit-autofill {
-    -webkit-text-fill-color: var(--color-light-text-dark) !important;
-}
-.dark input:-webkit-autofill,
-.dark textarea:-webkit-autofill,
-.dark select:-webkit-autofill {
-    -webkit-text-fill-color: var(--color-dark-text-dark) !important;
-}
-
-/* Firefox autofill */
-input:-moz-autofill,
-textarea:-moz-autofill,
-select:-moz-autofill,
-input:-moz-autofill:focus,
-textarea:-moz-autofill:focus,
-select:-moz-autofill:focus {
-    box-shadow: 0 0 0px 1000px transparent inset !important;
-    -moz-box-shadow: 0 0 0px 1000px transparent inset !important;
-    -moz-text-fill-color: currentColor !important;
-    color: inherit !important;
-}
