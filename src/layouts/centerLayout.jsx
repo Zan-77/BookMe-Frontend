@@ -2,7 +2,7 @@ import React, { use } from 'react'
 import { Outlet } from 'react-router'
 import useTheme from '../hooks/useTheme';
 
-const centerLayout = () => {
+const CenterLayout = () => {
 
 
     return (
@@ -13,4 +13,4 @@ const centerLayout = () => {
     )
 }
 
-export default centerLayout
+export default CenterLayout

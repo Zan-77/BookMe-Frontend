@@ -11,7 +11,7 @@ import Input from "../components/Input"
 import useAuthUser from "../hooks/useAuthUser";
 const Login = () => {
     const dispatch = useDispatch();
-    const [setAccess, setRefresh] = useAuthUser();
+    const {setAccess, setRefresh} = useAuthUser();
     const navigate = useNavigate();
     const [text] = useLanguage("login")
 
@@ -49,7 +49,7 @@ const Login = () => {
     return (
 
         <form
-            className="flex flex-col w-full h-dvh bg-light-dark dark:bg-dark-dark md:bg-light md:dark:bg-dark p-4 *:my-5 *:md:mb-6 sm:*:w-3/4 sm:justify-center sm:items-center *:md:w-full md:min-w-md md:w-1/4 md:h-fit md:px-8 md:rounded-sm md:border-2 border-light-light dark:border-dark-light"
+            className="flex flex-col w-full h-dvh bg-light-dark dark:bg-dark-dark md:bg-light md:dark:bg-dark p-4 *:my-5 *:md:mb-6 sm:*:w-3/4 sm:justify-center sm:items-center *:md:w-full md:min-w-md md:w-1/4 md:h-fit md:px-8 md:rounded-sm md:border-2 border-light-border dark:border-dark-light"
             onSubmit={handleSubmit(onSubmit)}>
             <h1 className="text-xl text-center cursor-default">{text.h1}</h1>
             <Input id="username" label={text.username.label} name="username" rules={{ required: { message: text.username.errorMessages.required, value: true } }} control={control} />

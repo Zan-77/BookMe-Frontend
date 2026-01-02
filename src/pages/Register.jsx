@@ -15,7 +15,7 @@ import { useNavigate } from "react-router";
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [setAccess, setRefresh] = useAuthUser();
+  const {setAccess, setRefresh} = useAuthUser();
   const [text] = useLanguage("register");
   const { control, watch, handleSubmit, setError, clearErrors, formState: { isSubmitting } } = useForm({
     defaultValues: {

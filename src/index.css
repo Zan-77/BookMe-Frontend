@@ -16,7 +16,7 @@
     */
     --color-dark-primary-dark: oklch(0.4 0.23 300);
     --color-dark-primary: oklch(0.45 0.23 300);
-    --color-dark-primary-light: oklch(0.6 0.23 300);
+    --color-dark-primary-light: oklch(0.64 0.23 300);
 
 
 
@@ -33,11 +33,106 @@
     --color-light-primary: oklch(0.6 0.18 300);
     --color-light-primary-light: oklch(0.7 0.18 300);
 
-    --color-light-dark: oklch(0.8 0 264);
-    --color-light: oklch(0.85 0 264);
-    --color-light-light: oklch(0.95 0 264);
+    --color-light-dark: oklch(0.92 0 264);
+    --color-light: oklch(0.95 0 264);
+    --color-light-light: oklch(0.99 0 264);
 
-    --color-light-text-dark: oklch(0.2 0 0);
-    --color-light-text-muted: oklch(0.34 0 0);
+    --color-light-border:oklch(0.85 0 264);
+
+    --color-light-text-dark: oklch(0.3 0 0);
+    --color-light-text-muted: oklch(0.35 0 0);
 }
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill:hover,
+input:-webkit-autofill::first-line,
+textarea:-webkit-autofill::first-line,
+select:-webkit-autofill::first-line {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: inherit !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input,
+textarea,
+select {
+    color: var(--color-light-text-dark);
+}
+
+/* Dark mode inputs */
+.dark input,
+.dark textarea,
+.dark select {
+    color: var(--color-dark-text-dark);
+}
+:root input:-webkit-autofill,
+:root textarea:-webkit-autofill,
+:root select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-light-text-dark) !important;
+}
+.dark input:-webkit-autofill,
+.dark textarea:-webkit-autofill,
+.dark select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-dark-text-dark) !important;
+}
+
+.react-calendar{
+    @apply w-sm bg-light dark:bg-dark p-4 border-2 border-light-border dark:border-dark-light rounded-md
+}
+.react-calendar__navigation__prev-button{
+    @apply hover:cursor-pointer hover:bg-light-light hover:dark:bg-dark-light rounded-xs
+}
+.react-calendar__navigation__prev2-button
+{
+    @apply invisible
+}
+
+.react-calendar__navigation__next-button{
+    @apply hover:cursor-pointer hover:bg-light-light hover:dark:bg-dark-light rounded-xs
+}
+.react-calendar__navigation__next2-button
+{
+    @apply invisible
+}
+
+/***************************************************************************************************/
+.react-calendar__navigation__label
+{
+    @apply pointer-events-none 
+}
+.react-calendar__navigation
+{
+    @apply flex
+}
+/***************************************************************************************************/
+
+
+.react-calendar__month-view__weekdays{
+    @apply flex justify-evenly *:text-center *:font-semibold  **:no-underline! my-2
+}
+.react-calendar__tile {
+    @apply max-w-full p-4 bg-none text-sm font-medium rounded-lg transition-all;
+  }
+/***************************************************************************************************/
+  
+  .react-calendar__tile:enabled:hover {
+    @apply bg-light-primary-light dark:bg-dark-primary-light;
+  }
+  
+  /* Active/Selected date */
+  .react-calendar__tile--active {
+    @apply bg-light-primary-dark dark:bg-dark-primary-dark text-light-text-dark dark:text-dark-text-dark  rounded-lg shadow-md;
+  }
+  .react-calendar__month-view__days__day--neighboringMonth{
+    @apply text-light-text-muted dark:text-dark-text-muted
+  }
+ 

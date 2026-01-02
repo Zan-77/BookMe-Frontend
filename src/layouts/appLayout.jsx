@@ -1,17 +1,15 @@
 import { Outlet } from "react-router"
 import Topnav from "../components/nav/Topnav"
 import SideNav from "../components/nav/SideNav"
-import { useState } from "react";
 
-const appLayout = () => {
-  const [openSideNav, setOpenSideNav] = useState(false);
+const AppLayout = () => {
 
   return (
-    <div>
-      <Topnav setSideNav={setOpenSideNav} openSideNav={openSideNav} />
-      <div className="pt-16">
-        <SideNav open={openSideNav} />
-        <div>
+    <div className="relative">
+      <Topnav />
+      <SideNav />
+      <div className="h-full border-l-2 ml-48  border-light-border dark:border-dark-light px-8">
+        <div className="min-h-dvh pt-16">
           <Outlet />
         </div>
       </div>
@@ -19,4 +17,4 @@ const appLayout = () => {
   )
 }
 
-export default appLayout
+export default AppLayout

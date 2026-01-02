@@ -13,23 +13,23 @@ import LoadingIcon from "./svg/LoadingIcon"
  * @param {Component} endIcon
  *  
  */
-const Button = ({ children, className, to = "", variant = "outline", size = "sm", color = "primary", disabled = false, loading = false, startIcon, endIcon, onClick,onSubmit, ...props }) => {
+const Button = ({ children, className, to = "", toid="",variant = "outline", size = "sm", color = "primary", disabled = false, loading = false, startIcon, endIcon, onClick, onSubmit, ...props }) => {
     const variants = {
         text: {
-            primary: "text-light-primary-dark dark:text-dark-primary hover:text-light-primary  dark:hover:bg-dark-primary-light/10",
-            accent: "hover:bg-light-light active:bg-light-light dark:active:bg-dark-light dark:hover:bg-dark-light",
-            link:"text-light-text-muted p-0! mx-1! dark:text-dark-text-muted hover:text-light-text-dark dark:hover:text-dark-text-dark underline underline-offset-2" ,
-            disabled: "text-light-text-muted dark:text-dark-text-muted hover:cursor-default hover:bg-transparent"
+            primary: "stroke-light-primary-dark dark:stroke-dark-primary-dark text-light-primary-dark dark:text-dark-primary hover:text-light-primary  hover:bg-light-primary-light/10  dark:hover:bg-dark-primary-light/10",
+            accent: "stroke-light-text-dark dark:stroke-dark-text-dark hover:bg-light-light active:bg-light-light dark:active:bg-dark-light dark:hover:bg-dark-light",
+            link: "text-light-text-muted p-0! mx-1! dark:text-dark-text-muted hover:text-light-text-dark dark:hover:text-dark-text-dark underline underline-offset-2",
+            disabled: "stroke-light-text-muted dark:stroke-dark-text-muted text-light-text-muted dark:text-dark-text-muted hover:cursor-default hover:bg-transparent"
         },
         fill: {
-            primary: "hover:bg-light-primary-dark bg-light-primary active:bg-light-primary-dark dark:hover:bg-dark-primary-dark dark:bg-dark-primary dark:active:bg-dark-primary",
-            accent: "bg-light-light dark:bg-dark hover:bg-light-light dark:hover:bg-dark-light",
-            disabled: "text-light-text-muted dark:text-dark-text-muted hover:cursor-default bg-light dark:bg-dark-light/90"
+            primary: "stroke-light-primary-dark dark:stroke-dark-primary-dark hover:bg-light-primary-dark bg-light-primary active:bg-light-primary-dark dark:hover:bg-dark-primary-dark dark:bg-dark-primary dark:active:bg-dark-primary",
+            accent: "sstroke-light-text-dark dark:stroke-dark-text-dark bg-light-light dark:bg-dark hover:bg-light-light dark:hover:bg-dark-light",
+            disabled: "stroke-light-text-muted dark:stroke-dark-text-muted text-light-text-muted dark:text-dark-text-muted hover:cursor-default bg-light dark:bg-dark-light/90"
         },
         outline: {
-            primary: "outline-1 lg:outline-2 outline-light-primary-dark hover:bg-light-primary/25 active:bg-light-primary/20 hover:outline-light-primary-light active:outline-light-primary-light dark:outline-dark-primary-dark dark:hover:bg-dark-primary/25 dark:active:bg-dark-primary/20 dark:hover:outline-dark-primary-light dark:active:outline-dark-primary-light",
-            accent: "outline-1 lg:outline-2 outline-light-text hover:outline-light-text/90 active:outline-light-text hover:bg-light-light active:bg-light-light dark:outline-dark-light dark:hover:bg-dark/75 dark:active:bg-dark/75 dark:hover:outline-dark-light dark:active:outline-dark-light dark:hover:text-dark-text/95 dark:active:text-dark-text/95",
-            disabled: "outline-1 lg:outline-2 text-light-text-muted dark:text-dark-text-muted hover:cursor-default outline-light-text-muted dark:outline-dark-text-muted"
+            primary: "stroke-light-primary-dark dark:stroke-dark-primary-dark outline-1 lg:outline-2 outline-light-primary-dark hover:bg-light-primary/25 active:bg-light-primary/20 hover:outline-light-primary-light active:outline-light-primary-light dark:outline-dark-primary-dark dark:hover:bg-dark-primary/25 dark:active:bg-dark-primary/20 dark:hover:outline-dark-primary-light dark:active:outline-dark-primary-light",
+            accent: "sstroke-light-text-dark dark:stroke-dark-text-dark outline-1 lg:outline-2 outline-light-text hover:outline-light-text/90 active:outline-light-text hover:bg-light-light active:bg-light-light dark:outline-dark-light dark:hover:bg-dark/75 dark:active:bg-dark/75 dark:hover:outline-dark-light dark:active:outline-dark-light dark:hover:text-dark-text/95 dark:active:text-dark-text/95",
+            disabled: "stroke-light-text-muted dark:stroke-dark-text-muted outline-1 lg:outline-2 text-light-text-muted dark:text-dark-text-muted hover:cursor-default outline-light-text-muted dark:outline-dark-text-muted"
         },
     }
     const sizes = {
@@ -39,16 +39,23 @@ const Button = ({ children, className, to = "", variant = "outline", size = "sm"
     }
     const finalStyle =
         `${disabled || loading ? variants[variant].disabled : "hover:cursor-pointer " + variants[variant][color]} ${sizes[size]}
-      ${(startIcon && endIcon) && children ? "flex w-fit  [&_svg]:mx-0.5" : (startIcon && !endIcon) && children ?"flex w-fit [&_svg]:mr-2": (!startIcon && endIcon) && children?"flex w-fit  [&_svg]:ml-2":"" }  ${loading && !(startIcon || endIcon) ? "text-transparent!" : ""}  relative font-medium transition-colors text-xs sm:text-sm lg:text-base rounded-sm content-center`
-    if (to) 
-        return <Link to={to} className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit ==="function"? disabled || loading ? null : onSubmit(e):null }} onClick={(e) => {typeof onClick ==="function"?  disabled || loading ? null : onClick(e):null }} {...props}>
+      ${(startIcon && endIcon) && children ? "flex  w-fit  [&_svg]:mx-0.5" : (startIcon && !endIcon) && children ? "flex w-fit [&_svg]:mr-2" : (!startIcon && endIcon) && children ? "flex w-fit  [&_svg]:ml-2" : ""}  ${loading && !(startIcon || endIcon) ? "text-transparent!" : ""}  relative font-medium transition-colors text-xs sm:text-sm lg:text-base rounded-sm content-center`
+    if (to)
+        return <Link to={to} className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit === "function" ? disabled || loading ? null : onSubmit(e) : null }} onClick={(e) => { typeof onClick === "function" ? disabled || loading ? null : onClick(e) : null }} {...props}>
             {loading && startIcon ? <LoadingIcon /> : startIcon}
             <span>{children}</span>
             {loading && endIcon ? <LoadingIcon /> : endIcon}
             {loading && !(startIcon || endIcon) ? <LoadingIcon className="absolute top-1/2 left-1/2 transition -translate-1/2" /> : ""}
         </Link>
+    else if (toid)
+        return <a href={`#${toid}`} className={finalStyle + " " + (className || "")}  {...props}>
+            {loading && startIcon ? <LoadingIcon /> : startIcon}
+            <span>{children}</span>
+            {loading && endIcon ? <LoadingIcon /> : endIcon}
+            {loading && !(startIcon || endIcon) ? <LoadingIcon className="absolute top-1/2 left-1/2 transition -translate-1/2" /> : ""}
+        </a>
     else
-        return <button className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit ==="function"? disabled || loading ? null : onSubmit(e):null }} onClick={(e) => {typeof onClick ==="function"?  disabled || loading ? null : onClick(e):null }} {...props}>
+        return <button className={finalStyle + " " + (className || "")} onSubmit={(e) => { typeof onSubmit === "function" ? disabled || loading ? null : onSubmit(e) : null }} onClick={(e) => { typeof onClick === "function" ? disabled || loading ? null : onClick(e) : null }} {...props}>
             {loading && startIcon ? <LoadingIcon /> : startIcon}
             <span>{children}</span>
             {loading && endIcon ? <LoadingIcon /> : endIcon}

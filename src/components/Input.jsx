@@ -20,7 +20,7 @@ export const Input = ({ id, className, name, control, rules, label, type = "text
 
 
 
-    const inputStyle = "peer/text w-full bg-inherit dark:bg-inherit text-light-text-dark dark:text-dark-text-dark  " + " " +
+    const inputStyle = "peer/text w-full bg-inherit dark:bg-inherit text-light-text-dark dark:text-dark-text-dark " + " " +
         `outline-2  rounded-sm p-3 
                 ${error ? "outline-error" :
             "outline-light-text-muted dark:outline-dark-light focus:outline-light-primary dark:focus:outline-dark-primary "}`;
