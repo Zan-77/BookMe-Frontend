@@ -11,6 +11,7 @@ import ClockIcon from "../components/svg/ClockIcon";
 import PinIcon from "../components/svg/PinIcon";
 import extractDataByIdentifier from "../utilities/extractDataByIdentifier";
 import { data, useSearchParams } from "react-router-dom";
+import { ax } from "../api/config";
 const Booking = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchValue, setSearchValue] = useState("")
@@ -18,7 +19,17 @@ const Booking = () => {
     const dispatch = useDispatch();
     const [myBookings, setMyBookings] = useState()
 
-
+    const handleCancel = async(id)=>{
+        try {
+            const res = await ax.post(`/bookings/${id}/cancel/`)
+            if(res.status ===200)
+                window.location.reload();
+            
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
 
     const handleGetBooking = async () => {
         const res = await getBooking();
@@ -60,7 +71,6 @@ const Booking = () => {
 
                             const diffInMs =  Math.abs( startdate - todaydate);
                             const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-                            console.log(diffInDays);
 
                             if (searchParams.get("filter") == "today" && diffInDays == 0)
                                 return true
@@ -92,7 +102,7 @@ const Booking = () => {
                                 if (item.status === filter || filter === "all")
                                     if (item.service.title.toLowerCase().includes(searchValue.toLowerCase()))
                                         return (
-                                            <Card key={uuidv4()} className="rounded-md transition-all hover:shadow-md/10">
+                                            <Card key={uuidv4()} className="relative rounded-md transition-all hover:shadow-md/10">
                                                 <div className="flex">
                                                     <img className="w-36 h-36 rounded-s-md" src={item.service.media[0]?.file} alt="no img" />
                                                     <div className="w-full p-4">
@@ -105,6 +115,10 @@ const Booking = () => {
                                                             <spam className="flex text-light-text-muted dark:text-dark-text-muted"><ClockIcon muted={true} />{time} {`(${Math.floor(duration / (1000 * 60 * 60))}h)`}</spam>
                                                         </div>
                                                         <spam className="flex mx-1 *:mx-1 text-light-text-muted  dark:text-dark-text-muted"><PinIcon ratio="w-5! h-5!" />{extractDataByIdentifier(item.service.description, "location")}</spam>
+                                                    </div>
+                                                    <div className="absolute bottom-0 right-0">
+
+                                                    {item.status=="booked"?<Button onClick={()=>{handleCancel(item.id)}} className=" w-fit ml-auto mb-4 mr-4">Cancel booking</Button>:""}
                                                     </div>
                                                 </div>
                                             </Card>
