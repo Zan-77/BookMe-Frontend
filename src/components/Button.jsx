@@ -23,7 +23,7 @@ const Button = ({ children, className, to = "", toid="",variant = "outline", siz
         },
         fill: {
             primary: "stroke-light-primary-dark dark:stroke-dark-primary-dark hover:bg-light-primary-dark bg-light-primary active:bg-light-primary-dark dark:hover:bg-dark-primary-dark dark:bg-dark-primary dark:active:bg-dark-primary",
-            accent: "sstroke-light-text-dark dark:stroke-dark-text-dark bg-light-light dark:bg-dark hover:bg-light-light dark:hover:bg-dark-light",
+            accent: "stroke-light-text-dark dark:stroke-dark-text-dark bg-light-light dark:bg-dark-light/70 hover:bg-light-light dark:hover:bg-dark-light",
             disabled: "stroke-light-text-muted dark:stroke-dark-text-muted text-light-text-muted dark:text-dark-text-muted hover:cursor-default bg-light dark:bg-dark-light/90"
         },
         outline: {

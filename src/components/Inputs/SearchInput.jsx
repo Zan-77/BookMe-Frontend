@@ -5,7 +5,7 @@ import SearchIcon from '../svg/SearchIcon'
 
 
 
-const SearchInput = ({ className, searchValue = "", setSearchValue, onButtonClick,onChange, OnKeyDown, onClick, onFocus, onSearch, hideButton = false }) => {
+const SearchInput = ({ className, searchValue = "",placeholder="Search . . .", setSearchValue, onButtonClick,onChange, OnKeyDown, onClick, onFocus, onSearch, hideButton = false }) => {
   const debounce = useDebounce(500);
 
   const handleInputChange = (e) => {
@@ -33,7 +33,7 @@ const SearchInput = ({ className, searchValue = "", setSearchValue, onButtonClic
         onClick={(e) => { typeof onClick === "function" ? onClick(e) : null }}
         type="text"
         className={`h-full px-2 bg-light dark:bg-dark outline-none w-full ${hideButton ? "border-2 rounded-md" : "border-t-2 border-l-2 border-b-2 rounded-l-md"} border-light-border dark:border-dark-light`}
-        placeholder='Search . . .'
+        placeholder={placeholder}
       />
       {hideButton ?
         ""

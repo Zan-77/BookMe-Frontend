@@ -72,16 +72,15 @@ const Topnav = () => {
         <h1 className='text-lg italic font-bold pt-2'>BOOKME.COM</h1>
         <div className='relative flex'>
           <SearchInput className="w-71"
+          hideButton={true}
             searchValue={searchValue}
             setSearchValue={(value) => {
               setSearchValue(value);
               dispatch(setStoreSearchValue(value));
             }}
             onSearch={(value) => { handleSearch(value) }}
-            OnKeyDown={(e) => { navigate(`/services/search/${searchValue}`) }}
             onFocus={(e) => { setSearchdropdown(true) }}
             onClick={(e) => { setSearchdropdown(true) }}
-            onButtonClick={(e) => { navigate(`/services/search/${searchValue}`) }}
           />
           <Dropdown position='top-11.5 left-0' drop={openSearchdropdown}
             onMouseLeave={(e) => { setSearchdropdown(false) }}

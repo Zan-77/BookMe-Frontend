@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useNavigate, useOutlet, useOutletContext, useParams } from 'react-router';
+import { useNavigate, useOutletContext, useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { capitalizeFirst } from '../utilities/capitalizeFirst';
 import Card from "../components/Card"

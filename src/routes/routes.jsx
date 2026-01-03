@@ -9,8 +9,8 @@ import Services from "../pages/Services";
 import Agency from "../pages/Agency";
 import ServicesLayout from "../layouts/ServicesLayout";
 import ServiceDetail from "../pages/serviceDetail";
-import Search from "../pages/Search";
 import Book from "../pages/Book";
+import Booking from "../pages/Booking";
 
 const router = createBrowserRouter([
   {
@@ -34,12 +34,13 @@ const router = createBrowserRouter([
                 path: "/services/:title",
                 Component: ServiceDetail,
               },
-              {
-                path: "/services/search/:query",
-                Component: Search,
-              },
-             
+              
             ]
+          },
+          {
+          
+            path: "/user/bookings",
+            Component:Booking,
           },
           {
 
